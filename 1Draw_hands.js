@@ -26,10 +26,10 @@ function drawInteraction(faces, hands) {
     Start drawing on the hands here
     */
 
-    fill(225, 225, 50);
-    ellipse(indexFingerTipX, indexFingerTipY, 30, 30);
+    // fill(225, 225, 50);
+    // ellipse(indexFingerTipX, indexFingerTipY, 30, 30);
 
-    // drawPoints(hand)
+    drawPoints(hand)
 
     //fingerPuppet(indexFingerTipX, indexFingerTipY);
 
@@ -131,5 +131,5 @@ function drawPoints(feature) {
     circle(element.x, element.y, 10);
   }
   pop()
-
+ 
 }

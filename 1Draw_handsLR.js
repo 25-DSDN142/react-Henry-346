@@ -16,7 +16,7 @@ function drawInteraction(faces, hands) {
     if (showKeypoints) {
       drawConnections(hand)
     }
-
+// test
     let thumbTip = hand.thumb_tip;
     let indTip = hand.index_finger_tip;
 
