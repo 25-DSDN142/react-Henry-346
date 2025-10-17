@@ -54,9 +54,20 @@ function drawInteraction(faces, hands) {
 
   //=================================================
 
+
+  
     if (hand.handedness === "Right") {
-      stroke(50,220,10);
-      strokeWeight(5);
+rect(middleFingerMcpX,middleFingerMcpY,100)
+
+
+
+
+
+
+
+
+     // stroke(50,220,10);
+     //strokeWeight(5);
 
      
       //Star on palm
@@ -72,17 +83,17 @@ function drawInteraction(faces, hands) {
       // endShape();
 
       // Star in Crook?
-      beginShape();
-      vertex(thumbIndTipX, thumbIndTipY);
-      vertex(indTip.x, indTip.y);
-      vertex(thIndX, thIndY);
-      vertex(indMcp.x, indMcp.y);
-      vertex(indThMTx, indThMTy);
-      vertex(thumbMcp.x, thumbMcp.y);
-      vertex(thThIndX, ththIndY);
-      endShape();
-
-
+      // beginShape();
+      // vertex(thumbIndTipX, thumbIndTipY);
+      // vertex(indTip.x, indTip.y);
+      // vertex(thIndX, thIndY);
+      // vertex(indMcp.x, indMcp.y);
+      // vertex(indThMTx, indThMTy);
+      // vertex(thumbMcp.x, thumbMcp.y);
+      // vertex(thThIndX, ththIndY);
+      // endShape();
+ 
+      
 
   
 
@@ -92,19 +103,22 @@ function drawInteraction(faces, hands) {
     }
 
     if (hand.handedness === "Left") {
+rect(middleFingerMcpX,middleFingerMcpY,100)
 
-      stroke(180,80,200);
-      strokeWeight(5);
 
-         beginShape();
-      vertex(thumbIndTipX, thumbIndTipY);
-      vertex(indTip.x, indTip.y);
-      vertex(thIndX, thIndY);
-      vertex(indMcp.x, indMcp.y);
-      vertex(indThMTx, indThMTy);
-      vertex(thumbMcp.x, thumbMcp.y);
-      vertex(thThIndX, ththIndY);
-      endShape();
+
+      // stroke(180,80,200);
+      // strokeWeight(5);
+
+      //    beginShape();
+      // vertex(thumbIndTipX, thumbIndTipY);
+      // vertex(indTip.x, indTip.y);
+      // vertex(thIndX, thIndY);
+      // vertex(indMcp.x, indMcp.y);
+      // vertex(indThMTx, indThMTy);
+      // vertex(thumbMcp.x, thumbMcp.y);
+      // vertex(thThIndX, ththIndY);
+      // endShape();
 
 
       // line(thumbIndTipX, thumbIndTipY, indTip.x, indTip.y);

@@ -1,20 +1,28 @@
 let bgImage;
 let sunX, sunY;
 let sunWidth, sunHeight;
+let cloud;
+let bgImage2;
+let sunImage
 
 /* load images here */
 function prepareInteraction() {
-  bgImage = loadImage('/images/background.png');
-  sunImage = loadImage('/images/sun.png');
-  planeImage = loadImage('/images/plane.png');
+  bgImage = loadImage('/images/Background1.png');
+  sunImage = loadImage('/images/Sun1.png');
+  bgImage2 = loadImage('/images/Background2.png');
+  cloud = loadImage('/images/Cloud.png');
 }
 
 let face;
+let Happy = true;
 
 function drawInteraction(faces, hands) {
 
-  // draw background first
-  image(bgImage, 0, 0, width, height);
+if (Happy) {
+  image(bgImage, 0, 0, width, height);   // sunny 
+} else {
+  image(bgImage2, 0, 0, width, height);  // cloudy 
+}
 
   if (faces.length > 0) {
     face = faces[0];
@@ -25,23 +33,32 @@ function drawInteraction(faces, hands) {
     let faceHeight = face.faceOval.height;
 
 
-    sunWidth = faceWidth * 1.5;
-    sunHeight = faceHeight * 1.5;
-    sunX = faceCenterX - sunWidth / 2;
-    sunY = faceCenterY - sunHeight / 2;
+    sunWidth = faceWidth * 3;
+    sunHeight = faceHeight * 2;
+    sunX = faceCenterX - sunWidth / 2.2;
+    sunY = faceCenterY - sunHeight / 2.5;
 
 
     // draw sun
     image(sunImage, sunX, sunY, sunWidth, sunHeight);
+   
+    if (Happy) {
+    image(sunImage, sunX, sunY, sunWidth, sunHeight);
+   } else {
+     image(cloud, sunX, sunY, sunWidth, sunHeight);
 
+    }
     // draw sun face
-    fill(255);
+    fill(0);
     ellipse(face.leftEye.centerX, face.leftEye.centerY, 20, 20);
     ellipse(face.rightEye.centerX, face.rightEye.centerY, 20, 20);
     fill(0);
     ellipse(face.leftEye.centerX, face.leftEye.centerY, 8, 8);
     ellipse(face.rightEye.centerX, face.rightEye.centerY, 8, 8);
     drawPoints(face.lips, "#ff0000", 10);
+
+
+
   }
   // hands part
   // for loop to capture if there is more than one hand on the screen. This applies the same process to all hands.
@@ -49,13 +66,23 @@ function drawInteraction(faces, hands) {
     // this means that the program will only act when its quite sure what it sees is a hand. 
     let hand = hands[i];
     // console.log(hand);
-    let indexFingerTipX = hand.index_finger_tip.x;
-    let indexFingerTipY = hand.index_finger_tip.y;
-    let topLeftX = indexFingerTipX - planeImage.width / 2;
-    let topLeftY = indexFingerTipY - planeImage.height / 2;
+    // let indexFingerTipX = hand.index_finger_tip.x;
+    // let indexFingerTipY = hand.index_finger_tip.y;
+    // let topLeftX = indexFingerTipX - planeImage.width / 2;
+    // let topLeftY = indexFingerTipY - planeImage.height / 2;
 
-    image(planeImage, topLeftX, topLeftY)
+
+      let whatGesture = detectHandGesture(hand)
+
+    if (whatGesture == "Fist") {
+      Happy = false;
+      } 
+      else if (whatGesture == "Peace") {
+      Happy = true;
+    }
   }
+
+
 
   if (showKeypoints) {
     drawPoints(face)
@@ -65,13 +92,13 @@ function drawInteraction(faces, hands) {
 }
 
 // This function draw's a dot on all the keypoints. It can be passed a whole face, or part of one. 
-function drawPoints(feature, color = "#00ff00", size = 5) {
-  push()
-  for (let i = 0; i < feature.keypoints.length; i++) {
-    let element = feature.keypoints[i];
-    noStroke();
-    fill(color);
-    circle(element.x, element.y, size);
-  }
-  pop()
+function drawPoints(feature, color = "#00ff00", size = 0) {
+  // push()
+  // for (let i = 0; i < feature.keypoints.length; i++) {
+  //   let element = feature.keypoints[i];
+  //   noStroke();
+  //   fill(color);
+  //   circle(element.x, element.y, size);
+  // }
+  // pop()
 }

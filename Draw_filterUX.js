@@ -1,17 +1,23 @@
 // ----=  HANDS  =----
-let halo;
+let Sunny;
 let rightHorn;
 let leftHorn;
 
-let angel = true;
+
+
+let Happy = true;
 
 function prepareInteraction() {
-  halo = loadImage('/images/Gemini_halo.png');
+
   rightHorn = loadImage('/images/Gemini_horn1.png');
   leftHorn = loadImage('/images/Gemini_horn2.png');
+  Sunny = loadImage('/images/sun.png');
 }
 
 function drawInteraction(faces, hands) {
+
+  // draw background first
+  image(bgImage, 0, 0, width, height);
 
   // hands part
   // USING THE GESTURE DETECTORS (check their values in the debug menu)
@@ -26,15 +32,16 @@ function drawInteraction(faces, hands) {
     }
     // console.log(hand);
     /*
+   
     Start drawing on the hands here
     */
 
     let whatGesture = detectHandGesture(hand)
     if (whatGesture == "Thumbs Up") {
-      angel = true;
+      Happy = true;
     }
-    if (whatGesture == "Open Palm") {
-      angel = false;
+    if (whatGesture == "Fist") {
+      Happy = false;
     }
 
     /*
@@ -77,8 +84,8 @@ function drawInteraction(faces, hands) {
     let hornXOffset = faceWidth * 0.6;
     let hornYOffset = faceheight * 1.5;
 
-    if (angel) {
-      image(halo, face.keypoints[103].x, face.keypoints[103].y - 200)
+    if (Happy) {
+      image(Sunny, faceCenterX, faceCenterY)
     } else {
       image(rightHorn, faceCenterX - hornXOffset, faceCenterY - hornYOffset, hornWidth, hornHeight) // imageName, x, y, imageWidth, imageHight
       image(leftHorn, faceCenterX + hornXOffset - leftHorn.width, faceCenterY - hornYOffset, hornWidth, hornHeight) // imageName, x, y, imageWidth, imageHight
