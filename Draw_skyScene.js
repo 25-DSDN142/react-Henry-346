@@ -14,7 +14,7 @@ function prepareInteraction() {
   cloud = loadImage('/images/Cloud.png');
   sunnies = loadImage('/images/sunnies.png');
 }
-
+let isMouthOpen = false;
 let face;
 let Happy = true;
 
@@ -34,12 +34,33 @@ if (Happy) {
     let faceWidth = face.faceOval.width;
     let faceHeight = face.faceOval.height;
 
+    function checkIfMouthOpen(face) {
+
+  let upperLip = face.keypoints[13]
+  let lowerLip = face.keypoints[14]
+  // ellipse(lowerLip.x,lowerLip.y,20)
+  // ellipse(upperLip.x,upperLip.y,20)
+
+  let d = dist(upperLip.x, upperLip.y, lowerLip.x, lowerLip.y);
+  //console.log(d)
+  if (d < 10) {
+    isMouthOpen = false;
+  } else {
+    isMouthOpen = true;
+  }
+
+  if(isMouthOpen){
+     image(sunnies, sunX, sunY, sunWidth, sunHeight);
+
+   }
+ }
 
     sunWidth = faceWidth * 3;
     sunHeight = faceHeight * 2;
     sunX = faceCenterX - sunWidth / 2.2;
     sunY = faceCenterY - sunHeight / 2.5;
 
+    
 
     // draw sun
     //image(sunImage, sunX, sunY, sunWidth, sunHeight);
