@@ -4,6 +4,7 @@ let sunWidth, sunHeight;
 let cloud;
 let bgImage2;
 let sunImage
+let sunnies;
 
 /* load images here */
 function prepareInteraction() {
@@ -11,6 +12,7 @@ function prepareInteraction() {
   sunImage = loadImage('/images/Sun1.png');
   bgImage2 = loadImage('/images/Background2.png');
   cloud = loadImage('/images/Cloud.png');
+  sunnies = loadImage('/images/sunnies.png');
 }
 
 let face;
@@ -40,13 +42,13 @@ if (Happy) {
 
 
     // draw sun
-    image(sunImage, sunX, sunY, sunWidth, sunHeight);
+    //image(sunImage, sunX, sunY, sunWidth, sunHeight);
    
     if (Happy) {
     image(sunImage, sunX, sunY, sunWidth, sunHeight);
    } else {
      image(cloud, sunX, sunY, sunWidth, sunHeight);
-
+     image(sunImage,0);
     }
     // draw sun face
     fill(0);
